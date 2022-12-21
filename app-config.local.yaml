@@ -1,0 +1,4 @@
+integrations:
+  github:
+    - host: github.com
+      token: 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

@@ -38,7 +38,8 @@ const useSidebarLogoStyles = makeStyles({
   },
   link: {
     width: sidebarConfig.drawerWidthClosed,
-    marginLeft: 24,
+    marginLeft: 5,
+    marginTop: 27,
   },
 });
 
@@ -51,6 +52,7 @@ const SidebarLogo = () => {
       <Link to="/" underline="none" className={classes.link} aria-label="Home">
         {isOpen ? <LogoFull /> : <LogoIcon />}
       </Link>
+       
     </div>
   );
 };
