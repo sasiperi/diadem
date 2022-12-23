@@ -138,7 +138,7 @@ const overviewContent = (
         <EntitySwitch.Case if={isJenkinsAvailable}>
           <Grid item sm={6}>
             <EntityLatestJenkinsRunCard
-              branch="main,master"
+              branch=""
               variant="gridItem"
             />
           </Grid>
@@ -269,6 +269,16 @@ const apiPage = (
             <EntityConsumingComponentsCard />
           </Grid>
         </Grid>
+        <EntitySwitch>
+        <EntitySwitch.Case if={isJenkinsAvailable}>
+          <Grid item sm={6}>
+            <EntityLatestJenkinsRunCard
+              branch=""
+              variant="gridItem"
+            />
+          </Grid>
+        </EntitySwitch.Case>
+      </EntitySwitch>
       </Grid>
     </EntityLayout.Route>
 
@@ -279,7 +289,14 @@ const apiPage = (
         </Grid>
       </Grid>
     </EntityLayout.Route>
+    <EntityLayout.Route path="/ci-cd" title="CI/CD">
+      {cicdContent}
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/docs" title="Docs">
+      {techdocsContent}
+    </EntityLayout.Route>
   </EntityLayout>
+  
 );
 
 const userPage = (

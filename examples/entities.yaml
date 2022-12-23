@@ -19,6 +19,19 @@ spec:
   system: examples
   providesApis: [example-grpc-api]
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sp-boot-ap01
+  annotations:
+    jenkins.io/job-full-name: sasi-jobs/sp-boot-ap01
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: sasipers@adp.com
+  lifecycle: experimental
+
+---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
 kind: API
