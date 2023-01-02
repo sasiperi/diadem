@@ -82,6 +82,13 @@ spec:
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
+        
+    - id: make-pipeline
+      name: Pipeline
+      action: diadem:make-pipeline
+      input:
+        jobName: ${{ parameters.component_id }}
+        repoUrl: ${{ steps.publish.output.remoteUrl }} 
 
     - id: register
       name: Register
@@ -89,14 +96,7 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
-
-    - id: make-pipeline
-      name: Pipeline
-      action: diadem:make-pipeline
-      input:
-        description: This is ${{ parameters.component_id }}
-        repoUrl: ${{ steps.publish.output.repoContentsUrl }}
-        
+     
   output:
     links:
       - title: Repository
@@ -104,8 +104,5 @@ spec:
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}
-      - title: Jenkins job url
-        url: ${{ steps.make-pipeline.output.jenkinsBaseUrl }}
-      - title: Jenkins Key
-        string: ${{ steps.make-pipeline.output.jenkinsApiKey }}  
-        #url: ${{ steps.make-pipeline.output.jenkinsApiKey }} 
+      - title: Jenkins job link
+        url: ${{ steps.make-pipeline.output.jobLink }}

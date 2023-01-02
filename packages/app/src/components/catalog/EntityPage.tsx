@@ -138,7 +138,7 @@ const overviewContent = (
         <EntitySwitch.Case if={isJenkinsAvailable}>
           <Grid item sm={6}>
             <EntityLatestJenkinsRunCard
-              branch=""
+              branch="main"
               variant="gridItem"
             />
           </Grid>
@@ -273,7 +273,7 @@ const apiPage = (
         <EntitySwitch.Case if={isJenkinsAvailable}>
           <Grid item sm={6}>
             <EntityLatestJenkinsRunCard
-              branch=""
+              branch="main"
               variant="gridItem"
             />
           </Grid>
