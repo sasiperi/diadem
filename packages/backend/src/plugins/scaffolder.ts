@@ -5,7 +5,7 @@ import type { PluginEnvironment } from '../types';
 
 import { ScmIntegrations } from '@backstage/integration';
 import { createBuiltinActions } from '@backstage/plugin-scaffolder-backend';
-import { createJenkinsPipelineAction } from './scaffolder/actions/diademCustomActions';
+import { createJenkinsPipelineAction } from './scaffolder/actions/jenkinsPipelineActions';
 
 export default async function createPlugin(
   env: PluginEnvironment,

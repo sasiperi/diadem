@@ -3,7 +3,6 @@ import { Config } from '@backstage/config';
 import fetch from 'node-fetch';
 
 export const createJenkinsPipelineAction = (config: Config) => {
-//export const createJenkinsPipelineAction = () => {
   return createTemplateAction<{ jobName: string, repoUrl: string }>({
     id: 'diadem:make-pipeline',
     schema: {
