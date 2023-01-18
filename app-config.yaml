@@ -136,3 +136,23 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+    #- type: 'localKubectlProxy'
+      clusters:
+        - url: https://kubernetes.docker.internal:6443
+          name: kind-kube
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          #serviceAccountToken: ${K8S_MINIKUBE_TOKEN}
+          serviceAccountToken: ${K8S_MINIKUBE_TOKEN}
+          #serviceAcountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IkMwQ1M3bGQwQWgwamp3cUREQS1VdTBZM2RvenNrTjdUNXRBMy0tWVBnNEEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc0MDAwNTg0LCJpYXQiOjE2NzM5OTY5ODQsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImJhY2stc3RhZ2UiLCJ1aWQiOiIzYmI3OTBmNC01OWE0LTQ0ZGEtYjNlNy1hZjYzZWI2MWJkN2EifX0sIm5iZiI6MTY3Mzk5Njk4NCwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OmRlZmF1bHQ6YmFjay1zdGFnZSJ9.UYv-PyAhFT2eZMU5pQq9X3N0wjFN8AVC_5TnQEQVz3KlwnxFmRVDzhfl17xjhIAxVEOpiIhtyfuoGOngBuByGh6H-CQQElk-cbgHu9meCxky5TP6pcY-QkkZ--w5G5gT-g8C9ayXEppJ3yQeXFQWv58sBjaW3jjUhAiXOLl2oXqudWbsfKwJEf5GRxdQqEF3Ub5B6jYAVAYzanu6Zd9kUH3_fUU6E1sNvCW-FKaXzZSxpGVdztMx1Rils1EzmMvWfPSMjeUvPE6jZ2KvETT-F9JJR_ALVM9vQliuZp-cEO2t6EFt8mNFsiM3DK-_l_8yMOufFSmRO8PM59i2EvA56A
+          #serviceAccountToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IkMwQ1M3bGQwQWgwamp3cUREQS1VdTBZM2RvenNrTjdUNXRBMy0tWVBnNEEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJzZWNyZXQtc2EtYWRtaW4iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiYWRtaW4tdXNlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImNiMGU0ZWUwLTc4NTYtNGJiOC1hMTc4LTA1N2VhZDlkNTY4ZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.gZEqimE-0LITn9qKee6exb8LMJ55UpbxwATHVHDt4cvIEagrvpUBrFCMx9rEmRI0RO9dClKissmmwjVeQEf62P1RiWuF0gBhVDVnK0EALLXGsscQa29vxhL7jb_xiWvtGM17Kf2GewWwMCl1S56Yb2U4GcdvNIN5FoRAVqV0BtayQEHEOGBnxhb2RlanqX4Q3cRfeo-WsgebrOCh2zXcVnYElYLqPc44c94CNtX0t01LcHt6nE9lNvCWdNjTe0mYFyliB3tm1sBF-6VeTyX1t7ECoBeOwR0oX1VmA1vqqq0ZKVhIyInJQBpEW-wVPQBrE-uGD7eCv2xr92cC-y8M4g'
+          dashboardUrl: http://127.0.0.1:8001 # url copied from running the command: minikube service kubernetes-dashboard -n kubernetes-dashboard
+          dashboardApp: standard
+          #caData: ${K8S_CONFIG_CA_DATA}
+          #caFile: '' # local path to CA file

@@ -24,8 +24,11 @@ kind: Component
 metadata:
   name: sp-boot-ap01
   annotations:
-    jenkins.io/job-full-name: testone 
+    jenkins.io/job-full-name: SP-TestJob 
     backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: springboot-app-final
+    backstage.io/kubernetes-namespace: sasiperi
+    
 spec:
   type: service
   owner: sasipers@adp.com
