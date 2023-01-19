@@ -9,6 +9,8 @@ metadata:
     #github.com/project-slug: ${{values.destination.owner + "/" + values.destination.repo}}
     jenkins.io/job-full-name: ${{values.destination.repo}}
     backstage.io/techdocs-ref: url:https://github.com/${{values.destination.owner + "/" + values.destination.repo}}
+    backstage.io/kubernetes-id: ${{values.destination.repo}}
+    backstage.io/kubernetes-namespace: ${{values.namespace | default}}
 spec:
   type: openapi
   lifecycle: develop

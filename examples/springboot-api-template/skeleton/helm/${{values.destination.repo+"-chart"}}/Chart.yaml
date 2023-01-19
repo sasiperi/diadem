@@ -1,0 +1,4 @@
+---
+name: ${{values.destination.repo+"-chart"}}
+version: 1.0-SNAPSHOT
+apiVersion: v2

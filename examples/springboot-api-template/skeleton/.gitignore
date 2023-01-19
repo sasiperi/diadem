@@ -3,5 +3,9 @@ target/
 .idea
 *.iml
 
+## eclipse
+.project
+.classpath
+
 ## Temp
 dependency-reduced-pom.xml

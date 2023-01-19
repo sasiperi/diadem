@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.dekorate.io/vcs-url: <<unknown>>
+    app.dekorate.io/commit-id: 208c8ff18235fd621ec4cd84f1ff53c74f6e01dd
+  labels:
+    app.kubernetes.io/name: ${{values.destination.repo}}
+    app.kubernetes.io/part-of: com.adp
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+    backstage.io/kubernetes-id: ${{values.destination.repo}}
+  name: ${{values.destination.repo}}
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: ${{values.destination.repo}}
+    app.kubernetes.io/part-of: com.adp
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+  type: {{ .Values.app.serviceType }}

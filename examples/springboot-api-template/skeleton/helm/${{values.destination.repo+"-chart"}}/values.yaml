@@ -1,0 +1,4 @@
+---
+app:
+  serviceType: ClusterIP
+  image: com.adp/${{values.destination.repo}}:1.0-SNAPSHOT

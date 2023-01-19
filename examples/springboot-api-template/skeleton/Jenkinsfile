@@ -29,12 +29,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                /*
-                   dir('asiperi-springboot-15factor-app-labs') {
-                        // some block
-                   }
 
-                */
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -42,6 +37,13 @@ pipeline {
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
+        }
+         stage('Build Images') {
+            steps {
+
+                	// Run Maven on a Unix agent.
+                	sh "mvn spring-boot:build-image -DskipTests"
+                }
 
             post {
                 // If Maven was able to run the tests, even if some of the test
@@ -50,6 +52,13 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+
+                sh "helm install ${{values.destination.repo+'-chart'}} helm/${{values.destination.repo+'-chart'}} --namespace ${{values.namespace | default}}"
+
             }
         }
     }
