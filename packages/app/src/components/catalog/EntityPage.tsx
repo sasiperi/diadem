@@ -62,6 +62,7 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import { DynatraceTab, isDynatraceAvailable } from '@backstage/plugin-dynatrace'
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -161,6 +162,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={10000} />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/dynatrace" title="Dynatrace" if={isDynatraceAvailable} >
+      <DynatraceTab />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
@@ -300,6 +305,9 @@ const apiPage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={10000} />
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/dynatrace" title="Dynatrace" if={isDynatraceAvailable} >
+      <DynatraceTab />
     </EntityLayout.Route>
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}

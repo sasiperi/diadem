@@ -34,12 +34,12 @@ const useSidebarLogoStyles = makeStyles({
     display: 'flex',
     flexFlow: 'row nowrap',
     alignItems: 'center',
-    marginBottom: -14,
+    marginBottom: -10,
   },
   link: {
     width: sidebarConfig.drawerWidthClosed,
-    marginLeft: 5,
-    marginTop: 27,
+    marginLeft: 15,
+    marginTop: 1,
   },
 });
 

@@ -28,6 +28,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     backstage.io/kubernetes-id: springboot-app-final
     backstage.io/kubernetes-namespace: sasiperi
+    dynatrace.com/dynatrace-entity-id: CUSTOM_DEVICE-8A26BB2F3AD06DA7
     
 spec:
   type: service

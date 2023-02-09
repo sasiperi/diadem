@@ -63,7 +63,11 @@ proxy:
   '/jenkins/api':
     target: http://127.0.0.1:8085
     changeOrigin: true
-
+  '/dynatrace':
+    target: 'https://xjr50536.live.dynatrace.com/api/v2'
+    headers:
+      Authorization: 'Api-Token dt0c01.LBEX7GHBLCFDD6YTSVMTHNK6.PQQH3M5GHMPZDJULZHB77XSLRPPXC74VT7OU5LNLBVJSENFXSEWNOVUJVFYWZQNF'
+      #Authorization: 'Api-Token ${DYNATRACE_ACCESS_TOKEN}'
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -156,3 +160,6 @@ kubernetes:
           dashboardApp: standard
           #caData: ${K8S_CONFIG_CA_DATA}
           #caFile: '' # local path to CA file
+
+dynatrace:
+  baseUrl: 'https://xjr50536.live.dynatrace.com'

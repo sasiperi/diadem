@@ -45,6 +45,14 @@ pipeline {
                 	sh "mvn spring-boot:build-image -DskipTests"
                 }
 
+        }
+        stage('Deploy') {
+            steps {
+
+                sh "helm upgrade --install ${{values.destination.repo+'-chart'}} helm/${{values.destination.repo+'-chart'}} --namespace ${{values.namespace | default}}"
+
+            }
+
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
@@ -52,13 +60,6 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
-            }
-        }
-        stage('Deploy') {
-            steps {
-
-                sh "helm install ${{values.destination.repo+'-chart'}} helm/${{values.destination.repo+'-chart'}} --namespace ${{values.namespace | default}}"
-
             }
         }
     }
